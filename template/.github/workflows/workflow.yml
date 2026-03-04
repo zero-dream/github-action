@@ -1,0 +1,47 @@
+# CI 项目
+name: workflow
+
+# CI 权限
+permissions: write-all
+
+# CI 计划
+on:
+  # 自动运行: 每天早上 4 点
+  schedule:
+    - cron: 0 20 * * *
+  # 手动运行
+  workflow_dispatch:
+    inputs:
+      TEST:
+        description: 'Test'
+        required: false
+        type: string
+        default: 'value'
+
+# CI 环境
+env:
+  # GITHUB ENV
+  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  # CI ENV
+  CI_TEST: ${{inputs.TEST}}
+
+# CI 任务
+jobs:
+  template:
+    name: workflow
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+
+      - name: InitWorkflow
+        run: |
+          workflowPath="$RUNNER_TEMP/Workflow-$(uuidgen | tr -d '-')"
+          git clone --depth=1 https://github.com/zero-dream/github-action.git "$workflowPath/" || exit 1
+          chmod +x "$workflowPath/zerodream/init/init.sh"
+          bash "$workflowPath/zerodream/init/init.sh"
+          rm -rf "$workflowPath/"
+
+      - name: WriteCode
+        run: |
+          # ... code
