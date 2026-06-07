@@ -25,7 +25,7 @@
 function gitPush() {
   # Param
   local githubRef=$1
-  local message="${2:-[$ZD_Date]}"
+  local message="${2:-[$ZD_DateUTC]}"
   # GitConfig
   git config --global user.name "github-actions[bot]"
   git config --global user.email "github-actions[bot]@users.noreply.github.com"

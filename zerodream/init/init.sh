@@ -14,7 +14,7 @@ source "$InitDir/../library/setEnv.sh"
 
 # ZDEnv
 setEnv 'ZD_Owner' 'zero-dream'
-setEnv 'ZD_Date' "$(TZ=UTC date '+%y%m%d%H%M%S')"
+setEnv 'ZD_DateUTC' "$(TZ=UTC date '+%y%m%d%H%M%S')"
 setEnv 'ZD_RootPath' "$GITHUB_WORKSPACE/zerodream"
 setEnv 'ZD_HookPath' "$GITHUB_WORKSPACE/hook"
 setEnv 'ZD_TempPath' "$ZD_RootPath/temp" && mkdir -p "$ZD_TempPath"

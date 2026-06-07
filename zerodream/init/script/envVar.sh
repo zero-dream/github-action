@@ -16,12 +16,11 @@ setEnv 'ZD_ConfigPath' "$ZD_RootPath/config"
 setEnv 'ZD_DataPath' "$ZD_RootPath/data"
 
 # CIEnv
-setEnv 'CI_AppPath' "$GITHUB_WORKSPACE/application"
 setEnv 'CI_ConfigPath' "$GITHUB_WORKSPACE/config"
 setEnv 'CI_LibPath' "$GITHUB_WORKSPACE/library"
+setEnv 'CI_RepositoryPath' "$GITHUB_WORKSPACE/repository"
 setEnv 'CI_ScriptPath' "$GITHUB_WORKSPACE/script"
 setEnv 'CI_StoragePath' "$GITHUB_WORKSPACE/storage"
-setEnv 'CI_RepositoryPath' "$GITHUB_WORKSPACE/repository"
 
 # --------------------------------------------------
 

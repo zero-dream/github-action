@@ -12,7 +12,6 @@
 # CheckDirs
 dirs=(
   "$ZD_RootPath/library/"
-  "$CI_AppPath/"
 )
 for dir in "${dirs[@]}"; do
   [[ -d "$dir/" ]] && find "$dir/" -type f \
