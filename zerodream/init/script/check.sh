@@ -12,7 +12,6 @@
 # CheckScript
 scriptDirs=(
   "$ZD_RootPath/library/"
-  "$CI_AppPath/"
 )
 for scriptDir in "${scriptDirs[@]}"; do
   [[ -d "$scriptDir/" ]] && find "$scriptDir/" -type f \

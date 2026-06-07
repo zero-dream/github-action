@@ -10,7 +10,7 @@ ScriptDir=$(dirname "${BASH_SOURCE[0]}")
 # --------------------------------------------------
 
 # GitClone
-workflowRepo="zero-dream/github-action"
+workflowRepo="$ZD_Owner/github-action"
 repoPath="$RUNNER_TEMP/ZeroWorkflowRepo-$(uuidgen | tr -d '-')" && mkdir -p "$repoPath"
 git clone --depth=1 https://github.com/$workflowRepo.git "$repoPath/" || exit 1 # Exit
 

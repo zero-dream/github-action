@@ -6,6 +6,7 @@
 
 # Dependence
 
+# env.ZERO_LIB_REPO
 # Jobs.Steps
 #   current.env: GH_TOKEN: ${{secrets.WORKFLOW_TOKEN}}
 # RepositoryPermissions (WORKFLOW_TOKEN):
@@ -14,28 +15,32 @@
 
 # --------------------------------------------------
 
-# GetApp
+# GetLib
 # $1 name
-function getApp() {
+# echo path
+function getLib() {
   # Param
   local name=$1
-  # RunApp
-  local appPath="$ZD_TempPath/application/$name"
-  if [[ -f "$appPath" ]]; then
-    echo "$appPath"
+  # Check
+  local libDir="$ZD_TempPath/library"
+  local libPath="$libDir/$name"
+  if [[ -f "$libPath" ]]; then
+    # Return
+    echo "$libPath"
     return 0
   fi
   # Download
   gh release download \
-    --repo 'zero-dream/github-application' \
+    --repo "$ZERO_LIB_REPO" \
     --pattern "$name" \
     --clobber \
-    --dir "$ZD_TempPath/application"
+    --dir "$libDir"
   if [[ $? -ne 0 ]]; then
     return 1
   fi
-  # RunApp
-  chmod +x "$appPath"
-  echo "$appPath"
+  # Chmod
+  chmod +x "$libPath"
+  # Return
+  echo "$libPath"
   return 0
 }
