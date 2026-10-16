@@ -5,20 +5,19 @@
 # --------------------------------------------------
 
 # Source
-source "$InitDir/../library/setEnv.sh"
-source "$InitDir/../library/createPath.sh"
+source "$InitDir/../script/setEnv.sh"
+source "$InitDir/../script/createPath.sh"
 
 # --------------------------------------------------
 
 # ZDRootEnv
-setEnv 'ZD_LibPath' "$ZD_RootPath/library"
+setEnv 'ZD_ScriptPath' "$ZD_RootPath/script"
 setEnv 'ZD_ConfigPath' "$ZD_RootPath/config"
 setEnv 'ZD_DataPath' "$ZD_RootPath/data"
 
 # CIEnv
 setEnv 'CI_ConfigPath' "$GITHUB_WORKSPACE/config"
 setEnv 'CI_LibPath' "$GITHUB_WORKSPACE/library"
-setEnv 'CI_RepositoryPath' "$GITHUB_WORKSPACE/repository"
 setEnv 'CI_ScriptPath' "$GITHUB_WORKSPACE/script"
 setEnv 'CI_StoragePath' "$GITHUB_WORKSPACE/storage"
 

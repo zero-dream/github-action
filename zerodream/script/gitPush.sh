@@ -19,13 +19,13 @@
 # --------------------------------------------------
 
 # GitPush
-# $1 githubRef
+# $1 ref
 # $2 message
 # echo message
 function gitPush() {
   # Param
-  local githubRef=$1
-  local message="${2:-[$ZD_DateUTC]}"
+  local ref=$1
+  local message="${2:-$ZD_DateUTC}"
   # GitConfig
   git config --global user.name "github-actions[bot]"
   git config --global user.email "github-actions[bot]@users.noreply.github.com"
@@ -35,9 +35,9 @@ function gitPush() {
     echo "No changes to commit"
     return 0
   else
-    local commitMessage="ZeroDream $message"
-    git commit -m "$commitMessage"
-    git push origin HEAD:$githubRef
+    message="Auto update [$message]"
+    git commit -m "$message"
+    git push origin HEAD:$ref
     return $?
   fi
 }

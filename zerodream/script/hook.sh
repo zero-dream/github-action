@@ -16,18 +16,17 @@ function hook() {
   # Param
   local scriptPath=$1
   # Hook
-  local hookPath="$ZD_HookPath/$scriptPath.hook"
-  echo '--------------------------------------------------'
+  local hookPath="$ZD_HookPath/$scriptPath"
+  echo "$(printf -- '-%.0s' {1..50})"
   echo "Hook: $hookPath"
   if [[ ! -f "$hookPath" ]]; then
     echo 'Warning: Hook does not exist'
-    echo '--------------------------------------------------'
     return 0
   fi
+  echo ''
   bash "$hookPath"
   local state=$?
   echo "State: $state"
-  echo '--------------------------------------------------'
   (($state == 1)) && exit 0
   (($state == 2)) && exit 1
   # Must, otherwise the status code will be that of the previous command

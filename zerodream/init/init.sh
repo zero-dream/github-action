@@ -8,7 +8,7 @@
 InitDir=$(dirname "${BASH_SOURCE[0]}")
 
 # Source
-source "$InitDir/../library/setEnv.sh"
+source "$InitDir/../script/setEnv.sh"
 
 # --------------------------------------------------
 
@@ -18,6 +18,7 @@ setEnv 'ZD_DateUTC' "$(TZ=UTC date '+%y%m%d%H%M%S')"
 setEnv 'ZD_RootPath' "$GITHUB_WORKSPACE/zerodream"
 setEnv 'ZD_HookPath' "$GITHUB_WORKSPACE/hook"
 setEnv 'ZD_TempPath' "$ZD_RootPath/temp" && mkdir -p "$ZD_TempPath"
+setEnv 'ZD_RepositoryPath' "$ZD_TempPath/repository"
 
 # --------------------------------------------------
 

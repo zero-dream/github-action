@@ -10,17 +10,17 @@
 
 # Dependence
 
-# library/gitPush.sh
+# script/gitPush.sh
 
 # --------------------------------------------------
 
 # Source
-source "$ZD_LibPath/gitPush.sh"
+source "$ZD_ScriptPath/gitPush.sh"
 
 # --------------------------------------------------
 
 # Variable
-Zero_TempRepoPath="$RUNNER_TEMP/ZeroRepo-$(uuidgen | tr -d '-')"
+Zero_TempRepoPath="$(mktemp -d "$RUNNER_TEMP/ZeroDream-UpdateRepo-XXXXXX")"
 
 # --------------------------------------------------
 
@@ -38,10 +38,10 @@ function cloneRepo() {
 }
 
 # PushRepo
-# $1 commit
+# $1 message
 function pushRepo() {
   # Param
-  local commit=$1
+  local message=$1
   # KeepDirArr
   local initCfgPath="$ZD_ConfigPath/init.json5"
   local initCfgJson=$(json5 "$initCfgPath")
@@ -54,8 +54,8 @@ function pushRepo() {
   find "$GITHUB_WORKSPACE/" -mindepth 1 -delete
   cp -a "$Zero_TempRepoPath/." "$GITHUB_WORKSPACE/"
   # GitPush
-  local currentBranch=$(git branch --show-current)
-  gitPush "$currentBranch" "$commit"
+  local ref=$(git branch --show-current)
+  gitPush "$ref" "$message"
   # DeleteRepo
   rm -rf "$Zero_TempRepoPath/"
   # Return

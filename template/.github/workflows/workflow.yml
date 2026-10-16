@@ -36,7 +36,7 @@ jobs:
 
       - name: InitWorkflow
         run: |
-          workflowPath="$RUNNER_TEMP/Workflow-$(uuidgen | tr -d '-')"
+          workflowPath="$(mktemp -d "$RUNNER_TEMP/ZeroDream-Workflow-XXXXXX")"
           git clone --depth=1 https://github.com/zero-dream/github-action.git "$workflowPath/" || exit 1
           chmod +x "$workflowPath/zerodream/init/init.sh"
           bash "$workflowPath/zerodream/init/init.sh"

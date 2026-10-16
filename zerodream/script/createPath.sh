@@ -5,8 +5,10 @@
 # --------------------------------------------------
 
 # Usage:
-# 01: createTempPath 'path/test:dir'
-# 02: createTempPath 'path/test:file'
+# createTempPath 'path/test:dir'
+# createTempPath 'path/test:file'
+
+# --------------------------------------------------
 
 # CreateTempPath
 # $1 string
