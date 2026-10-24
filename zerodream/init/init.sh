@@ -14,11 +14,14 @@ source "$InitDir/../script/setEnv.sh"
 
 # ZDEnv
 setEnv 'ZD_Owner' 'zero-dream'
-setEnv 'ZD_DateUTC' "$(TZ=UTC date '+%y%m%d%H%M%S')"
 setEnv 'ZD_RootPath' "$GITHUB_WORKSPACE/zerodream"
 setEnv 'ZD_HookPath' "$GITHUB_WORKSPACE/hook"
 setEnv 'ZD_TempPath' "$ZD_RootPath/temp" && mkdir -p "$ZD_TempPath"
 setEnv 'ZD_RepositoryPath' "$ZD_TempPath/repository"
+
+# TimeEnv
+setEnv 'ZD_DateUTC' "$(TZ=UTC date '+%y%m%d%H%M%S')"
+setEnv 'ZD_DateShangHai' "$(TZ=Asia/Shanghai date '+%y%m%d%H%M%S')"
 
 # --------------------------------------------------
 
